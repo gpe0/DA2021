@@ -15,18 +15,37 @@ unsigned int sumArray(unsigned int a[], unsigned int n) {
 bool isCanonical(unsigned int C[], unsigned int n) {
 
     unsigned int S[n];
-    unsigned int used[n];
+    unsigned int used1[n];
+    unsigned int used2[n];
 
     for (int i = 0; i < n; i++) {
-        S[i] = INT_MAX;
+        S[i] = 50;
+        used1[i] = 0;
+        used2[i] = 0;
     }
 
     for (int i = C[2] + 2; i < C[n - 2] + C[n - 1]; i++) {
-        changeMakingBF(C, S, n, i, used);
-        for (int i = 0; i < n; i++) std::cout << used[i] << std::endl;
+        for (int j = 0; j < n; j++) {
+            used1[j] = 0;
+            S[j] = 50;
+        }
+        changeMakingBF(C, S, n, i, used1);
+
+        for (int j = 0; j < n; j++) {
+            S[j] = 50;
+        }
+
+        changeMakingGreedy(C, S, n, i, used2);
+
+        for (int j = 0; j < n; j++) {
+            if (used1[j] != used2[j]) {
+                return false;
+            }
+        }
     }
 
-    return false;
+
+    return true;
 }
 
 
@@ -43,5 +62,5 @@ TEST(TP1_Ex5, canonicalTrue) {
 
 TEST(TP1_Ex5, canonicalFalse) {
     unsigned int C[] = {1,4,5};
-    EXPECT_EQ(isCanonical(C,3), true);
+    EXPECT_EQ(isCanonical(C,3), false);
 }

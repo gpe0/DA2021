@@ -19,7 +19,6 @@ int cmbf(unsigned int C[], unsigned int Stock[], unsigned int n, unsigned int T,
     int res = INT_MAX / 2;
     unsigned int tempU[n];
     unsigned int before[n];
-    int bIndex;
 
     for (int i = 0; i < n; i++) {
         tempU[i] = usedCoins[i];
@@ -40,7 +39,9 @@ int cmbf(unsigned int C[], unsigned int Stock[], unsigned int n, unsigned int T,
             res = temp + 1;
         } else {
             Stock[i]++;
-            tempU[i]--;
+            for (int i = 0; i < n; i++) {
+                tempU[i] = before[i];
+            }
         }
     }
     return res;
@@ -89,6 +90,7 @@ TEST(TP1_Ex3, hasBFChangeNonCanonical) {
     EXPECT_EQ(usedCoins[2], 1);
 
     for (int i = 0; i < 3; i++) usedCoins[i] = 0;
+
     Stock[0] = 2;
     Stock[1] = 2;
     Stock[2] = 1;
