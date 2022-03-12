@@ -19,7 +19,7 @@ bool isCanonical(unsigned int C[], unsigned int n) {
     unsigned int used2[n];
 
     for (int i = 0; i < n; i++) {
-        S[i] = 50;
+        S[i] = 5;
         used1[i] = 0;
         used2[i] = 0;
     }
@@ -27,12 +27,12 @@ bool isCanonical(unsigned int C[], unsigned int n) {
     for (int i = C[2] + 2; i < C[n - 2] + C[n - 1]; i++) {
         for (int j = 0; j < n; j++) {
             used1[j] = 0;
-            S[j] = 50;
+            S[j] = 5;
         }
         changeMakingBF(C, S, n, i, used1);
 
         for (int j = 0; j < n; j++) {
-            S[j] = 50;
+            S[j] = 5;
         }
 
         changeMakingGreedy(C, S, n, i, used2);

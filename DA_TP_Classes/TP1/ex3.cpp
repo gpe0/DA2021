@@ -31,6 +31,7 @@ int cmbf(unsigned int C[], unsigned int Stock[], unsigned int n, unsigned int T,
         tempU[i]++;
         int temp = cmbf(C, Stock, n, T - C[i], tempU);
 
+        Stock[i]++;
         if (temp + 1 < res) {
             for (int i = 0; i < n; i++) {
                 usedCoins[i] = tempU[i];
@@ -38,7 +39,6 @@ int cmbf(unsigned int C[], unsigned int Stock[], unsigned int n, unsigned int T,
             }
             res = temp + 1;
         } else {
-            Stock[i]++;
             for (int i = 0; i < n; i++) {
                 tempU[i] = before[i];
             }
