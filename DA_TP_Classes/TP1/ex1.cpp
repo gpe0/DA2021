@@ -3,15 +3,22 @@
 #include "exercises.h"
 
 bool sum3(unsigned int T, unsigned int nums[3]) {
-    //TODO...
-
+    for (int i = 1; i <= T; i++) {
+        for (int j = 1; j <= T; j++) {
+            for (int k = 1; k <= T; k++) {
+                if (i + j + k == T) {
+                    nums[0] = i;
+                    nums[1] = j;
+                    nums[2] = k;
+                    return true;
+                }
+            }
+        }
+    }
     return false;
 }
 
 bool sum3_a(unsigned int T, unsigned int nums[3]) {
-    //TODO...
-
-    return false;
 }
 
 /// TESTS ///

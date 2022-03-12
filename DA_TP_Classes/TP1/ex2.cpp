@@ -2,10 +2,25 @@
 
 #include "exercises.h"
 
-int maxSubsequence(int A[], unsigned int n, unsigned int &i, unsigned int &j) {
-    //TODO...
 
-    int maxSum;
+int maxSubsequence(int A[], unsigned int n, unsigned int &i, unsigned int &j) {
+    int maxSum = 0;
+
+    for (int p1 = 0; p1 < n; p1++) {
+        for (int p2 = p1 + 1; p2 < n; p2++) {
+            int t1 = p1, t2 = p2, temp = 0;
+            while (t2 != t1) {
+                temp += A[t2];
+                t2--;
+            }
+            temp += A[t1];
+            if (temp > maxSum) {
+                maxSum = temp;
+                i = p1;
+                j = p2;
+            }
+        }
+    }
 
     return maxSum;
 }
