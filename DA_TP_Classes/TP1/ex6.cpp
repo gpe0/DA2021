@@ -1,5 +1,6 @@
 // By: Gonçalo Leão
 
+#include <iostream>
 #include "exercises.h"
 #include <algorithm>
 
@@ -12,9 +13,28 @@ bool Activity::operator<(const Activity &a2) const {
 }
 
 std::vector<Activity> earliestFinishScheduling(std::vector<Activity> A) {
-    //TODO...
 
     std::vector<Activity> res;
+
+    std::sort(A.begin(), A.end());
+
+    res.push_back(A.front());
+
+    A.erase(A.begin());
+
+    while (!A.empty()) {
+        bool temp = true;
+        for (int i = 0; i < A.size(); i++) {
+            if (A[i].start >= res.back().finish) {
+                res.push_back(A[i]);
+                A.erase(A.begin() + i);
+                temp = false;
+                break;
+            }
+        }
+        if (temp) break;
+
+    }
 
     return res;
 }
