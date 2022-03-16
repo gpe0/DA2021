@@ -7,7 +7,8 @@ add_subdirectory(${GOOGLETEST_PATH})
 
 # Add the source files of each TP class
 #file(GLOB TP1_FILES CONFIGURE_DEPENDS "TP1/*.cpp")
-file(GLOB TP2_FILES CONFIGURE_DEPENDS "TP2a/*.cpp")
+#file(GLOB TP2_FILES CONFIGURE_DEPENDS "TP2a/*.cpp")
+file(GLOB TP2_FILES CONFIGURE_DEPENDS "TP2b/*.cpp")
 #file(GLOB TP3_FILES CONFIGURE_DEPENDS "TP3/*.cpp")
 #...
 
